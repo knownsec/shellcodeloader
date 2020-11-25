@@ -1,98 +1,100 @@
 # ShellcodeLoader
 
-  Windows平台的shellcode免杀加载器，可用于shellcode的快速免杀。
+语言： [中文](readme_cn.md) 
 
-## 1.功能特点
+ShellcodeLoader of windows can bypass AV.
 
-1. 自带多种加载方式。32位自带13种加载方式，64位自带12种加载方式。
+## Features
 
-2. 支持拓展。如果发现新的利用方式，按指定方式开发模板即可。
+1. It has many loading modes. There are 13 loading modes in 32 bits and 12 loading modes in 64 bits.
 
-3. shellcode自动随机加密。使用时间为种子，生成128位密钥进行加密，相同shellcode出来的加载器的md5也不相同。
+2. Support development. If a new attack means is found, you can develop template according to the specified method.
+
+3. Shellcode is automatically encrypted.The md5 of loaders that come from the same shellcode are different,because the generator uses time as seed to randomly generate 128-bit keys for encryption.
 
    
 
-## 2.编译环境和方法
+## To do list
 
-   环境:生成器使用MFC实现UI，生成器和加载器模板均使用C++开发，VS2015静态编译。
+Environment: The generator uses MFC to implement UI, the generator and loader templates are developed with C + +, and statically compiled by VS2015.
 
-   方法:使用VS2015打开项目的解决方案(.sln)，再进行编译即可。
+ Methods: Use vs2015 to open the project solution (. sln), and then compile.Of course,You can download the product from [realse](https://github.com/knownsec/shellcodeloader/releases/tag/v1.0) .
 
 
 
-## 3.文件组成
+## Files
 
-  本工具由生成器(shellcodeLoader.exe),和众多加载器模板组成。不同的加载器模板需放入对应位数的目录。并最终放入生成器同目录下的DATA目录。
+  The tool is composed of a generator (Shellcodeloader.exe) and numerous loader templates. Different loader templates need to be placed in the corresponding arch of directories. And finally put into the DATA folder under the same directory of the generator.
 
 <img src="Readme.assets/image-20201124160121278.png" alt="image-20201124160121278" style="zoom:80%;" />
 
 
 
-## 4.使用方法
+## How to use
 
-1. **打开生成器**
+1. **Open the generator(shellcode.exe)**
 
    ![image-20201124160202106](Readme.assets/image-20201124160202106.png)
 
    
 
-2. **将想要加载的shellcode源文件(.bin)拖入该窗口**
+2. **Drag your raw shellcode(.bin) into the generator**
 
    ![image-20201124160330548](Readme.assets/image-20201124160330548.png)
 
    
 
-3. **勾选加载器的运行位数，并选择你需要的配置选项，是否需要自启动(自带方式皆为注册表方式自启动)，是否需要反沙箱(64位下多数杀软不需要该选项即可免杀)**
+3. **Choose the loader's arch (default x86)，And select the configuration options you want, whether you want to autostart(which comes with a registry), and whether you want to antisandbox(This option is not required for most 64-bit loaders)**
 
    
 
-4. **选择你想要的加载方式，不同位数下的加载方式会有不同，其取决于DATA目录下对应的加载器模板。**
+4. **Choose how you want to load it. Different loading methos depending on the loading template in the DATA floder.**
 
    ![image-20201124160839607](Readme.assets/image-20201124160839607.png)
 
    
 
-5. **点击生成，则会在桌面生成最终的加载器。**
+5. **Click Generate and the final loader will be generated on the desktop. **
 
    ![image-20201124161035698](Readme.assets/image-20201124161035698.png)
 
-## 5.拓展方法
+## How to expand
 
-1. 在你新的模板源文件前包含public.hpp.
+1. include public.hpp in your cpp.
 
    
 
-2. 调用GetShellcodeFromRes()函数获取shellcode信息,注意100不可更改，除非你改了生成器中的资源序号。
+2. Call the GetShellcodeFromRes() function to get shellcode,the number 100 is immutable,unless you change the resourceID in generator.
 
    ![image-20201124162327193](Readme.assets/image-20201124162327193.png)
 
-   其返回shellcode的数据指针，并且，shellcodeSize就是shellcode的大小。
+   It will return the pointer of shellcode in resource，and shellcodesize is size of sehllcode。
 
    
 
-3. 按照你需要的方法加载shellcode，完成后进行编译(PS:请确保你进行了静态编译，且取消了调试符号链接)
+3. Loading shellcode in your method ,and compile(PS:**Make sure you compile statically and cancel the debug symbolic link**)
 
    ![image-20201124162721783](Readme.assets/image-20201124162721783.png)
 
    
 
-4. 将编译出来的文件进行指定命名，并将其后缀改为DAT，放入指DATA目录下指定位数的目录中，生成器会自动获取该加载方式。
+4. Use method name your template,and change its format to "DAT"，Put it in correct arch in DATA folder ,The generator will automatically get the loading method.
 
    ![image-20201124162912373](Readme.assets/image-20201124162912373.png)
 
    
 
-###  关于public.hpp
+###  About public.hpp
 
-  public.hpp源码中含有必要的注释。如果你想要其他的方式进行反沙箱,你可以更改antisandbox中的函数；如果你想要其他方式自启动，你可以更改autostart函数中的内容。其他函数体的内容多数情况下是不需要更改的。
+  public.hpp contains the necessary comments.If you want other ways of anti sandbox, you can change the content of anti sandbox function; if you want other ways of self starting, you can change the content of autostart function. In most cases, the contents of other function bodies do not need to be changed.
 
 
 
-## 6.使用效果
+## 使用效果
 
-VT检测效果，均以CS原始shellcode，并不勾选反沙箱为例：
+virus total detection results,based on Cobalt Strike original shellcode without anti-sandbox option as an example:
 
-| 加载方式                 | 未绕过率 |
+| Loading methods          | Detected |
 | ------------------------ | -------- |
 | CreateThreadpoolWait加载 | 3/72     |
 | Fiber加载                | 4/72     |
@@ -108,12 +110,12 @@ VT检测效果，均以CS原始shellcode，并不勾选反沙箱为例：
 | 入口点劫持注入加载       | 3/72     |
 | 线程劫持注入加载         | 6/72     |
 
-在动态加载方式勾选反沙箱之后，结果如下：
+After clieck the anti-sandbox option in the dynamic loading mode, the results are as follows:
 
 ![1fef278889c961331a185698c35d220](Readme.assets/1fef278889c961331a185698c35d220.png)
 
 
 
-使用该加载器bypass诺顿的智能防火墙出网拦截，并上线:
+Bypass network interception of norton's smart firewall,and online by this tool.
 
 ![image-20201124163815942](Readme.assets/image-20201124163815942.png)
