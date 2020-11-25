@@ -119,3 +119,23 @@ VT检测效果，均以CS原始shellcode，并不勾选反沙箱为例：
 使用该加载器bypass诺顿的智能防火墙出网拦截，并上线:
 
 ![image-20201124163815942](readme.assets/image-20201124163815942.png)
+
+
+
+## 参考
+
+- [反沙箱](https://0xpat.github.io/Malware_development_part_2/)
+- [RC4算法](https://www.52pojie.cn/thread-800115-1-1.html)
+- [CreateThreadpoolWait加载](https://www.ired.team/offensive-security/code-injection-process-injection/shellcode-execution-via-createthreadpoolwait)
+- [Fiber加载](https://www.ired.team/offensive-security/code-injection-process-injection/executing-shellcode-with-createfiber)
+- [NtTestAlert加载](https://www.ired.team/offensive-security/code-injection-process-injection/shellcode-execution-in-a-local-process-with-queueuserapc-and-nttestalert)
+- [SEH异常加载](https://idiotc4t.com/code-and-dll-process-injection/seh-code-execute)
+- [TLS回调加载](https://idiotc4t.com/code-and-dll-process-injection/tls-code-execute)
+- [系统call加载](https://modexp.wordpress.com/2020/06/01/syscalls-disassembler/)
+- [APC注入](https://www.ired.team/offensive-security/code-injection-process-injection/apc-queue-code-injection)
+- [Early Bird APC注入](https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection)
+- [Early Brid APC注入原理](https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection)
+- [NtCreateSection注入](https://www.ired.team/offensive-security/code-injection-process-injection/ntcreatesection-+-ntmapviewofsection-code-injection)
+- [入口点劫持注入](https://www.ired.team/offensive-security/code-injection-process-injection/addressofentrypoint-code-injection-without-virtualallocex-rwx)
+- [线程劫持注入](https://idiotc4t.com/code-and-dll-process-injection/setcontext-hijack-thread)
+- 《加密与解密4》

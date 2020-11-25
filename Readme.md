@@ -90,9 +90,9 @@ Environment: The generator uses MFC to implement UI, the generator and loader te
 
 
 
-## 使用效果
+## Result
 
-virus total detection results,based on Cobalt Strike original shellcode without anti-sandbox option as an example:
+  Virus total detection results,based on Cobalt Strike original shellcode without anti-sandbox option as an example:
 
 | Loading methods          | Detected |
 | ------------------------ | -------- |
@@ -119,3 +119,23 @@ After clieck the anti-sandbox option in the dynamic loading mode, the results ar
 Bypass network interception of norton's smart firewall,and online by this tool.
 
 ![image-20201124163815942](Readme.assets/image-20201124163815942.png)
+
+
+
+## Ref
+
+- [Antisandbox](https://0xpat.github.io/Malware_development_part_2/)
+- [RC4 Crypt](https://www.52pojie.cn/thread-800115-1-1.html)
+- [CreateThreadpoolWait Load](https://www.ired.team/offensive-security/code-injection-process-injection/shellcode-execution-via-createthreadpoolwait)
+- [Fiber Load](https://www.ired.team/offensive-security/code-injection-process-injection/executing-shellcode-with-createfiber)
+- [NtTestAlert Load](https://www.ired.team/offensive-security/code-injection-process-injection/shellcode-execution-in-a-local-process-with-queueuserapc-and-nttestalert)
+- [SEH except Load](https://idiotc4t.com/code-and-dll-process-injection/seh-code-execute)
+- [TLS callback Load](https://idiotc4t.com/code-and-dll-process-injection/tls-code-execute)
+- [syscall Load](https://modexp.wordpress.com/2020/06/01/syscalls-disassembler/)
+- [APC Inject Load](https://www.ired.team/offensive-security/code-injection-process-injection/apc-queue-code-injection)
+- [Early Bird APC Inject Load](https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection)
+- [Early Brid APC Inject](https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection)
+- [NtCreateSection Inject Load](https://www.ired.team/offensive-security/code-injection-process-injection/ntcreatesection-+-ntmapviewofsection-code-injection)
+- [OEP Hiijack Hiijack Inject Load](https://www.ired.team/offensive-security/code-injection-process-injection/addressofentrypoint-code-injection-without-virtualallocex-rwx)
+- [Thread Hiijack Inject Load](https://idiotc4t.com/code-and-dll-process-injection/setcontext-hijack-thread)
+- 《加密与解密4》
