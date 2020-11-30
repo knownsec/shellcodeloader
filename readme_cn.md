@@ -56,7 +56,7 @@ Windows平台的shellcode免杀加载器。
 
 5. **点击生成，则会在桌面生成最终的加载器。**
 
-   ![image-20201124161035698](readme.assets/image-20201124161035698.png)
+   ![image-20201124161035698](Readme.assets/image-20201124161035698.png)
 
 ## 拓展方法
 
