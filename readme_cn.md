@@ -68,17 +68,17 @@ Windows平台的shellcode免杀加载器。
 
    ![image-20201124162327193](readme.assets/image-20201124162327193.png)
 
-   其返回shellcode的数据指针，并且，shellcodeSize就是shellcode的大小。
+   其返回shellcode的数据指针，并且，shellcodeSize就是shellcode的大小。多数情况下，这一步是不需要进行更改的，你可以在获取shellcode之后做任何事。
 
    
 
-3. 按照你需要的方法加载shellcode，完成后进行编译(PS:请确保你进行了静态编译，且取消了调试符号链接)
+3. 按照你需要的方法加载shellcode，完成后进行编译(PS:请确保你进行了静态编译，且取消了调试符号链接).
 
    ![image-20201124162721783](readme.assets/image-20201124162721783.png)
 
    
 
-4. 将编译出来的文件进行指定命名，并将其后缀改为DAT，放入指DATA目录下指定位数的目录中，生成器会自动获取该加载方式。
+4. 将编译出来的文件进行指定命名,这里的命名就是UI上最终现实的加载方式名称，并将其后缀改为DAT，放入指DATA目录下指定位数的目录中，生成器会自动获取该加载方式。
 
    ![image-20201124162912373](readme.assets/image-20201124162912373.png)
 

@@ -34,13 +34,13 @@ Environment: The generator uses MFC to implement UI, the generator and loader te
 
 1. **Open the generator(shellcode.exe)**
 
-   ![image-20201124160202106](Readme.assets/image-20201124160202106.png)
+   ![image-20201130105542851](Readme.assets/image-20201130105542851.png)
 
    
 
 2. **Drag your raw shellcode(.bin) into the generator**
 
-   ![image-20201124160330548](Readme.assets/image-20201124160330548.png)
+   ![image-20201130105623219](Readme.assets/image-20201130105623219.png)
 
    
 
@@ -50,7 +50,7 @@ Environment: The generator uses MFC to implement UI, the generator and loader te
 
 4. **Choose how you want to load it. Different loading methos depending on the loading template in the DATA floder.**
 
-   ![image-20201124160839607](Readme.assets/image-20201124160839607.png)
+   ![image-20201130105735363](Readme.assets/image-20201130105735363.png)
 
    
 
@@ -66,21 +66,21 @@ Environment: The generator uses MFC to implement UI, the generator and loader te
 
 2. Call the GetShellcodeFromRes() function to get shellcode,the number 100 is immutable,unless you change the resourceID in generator.
 
-   ![image-20201124162327193](Readme.assets/image-20201124162327193.png)
+   ![image-20201130105338767](Readme.assets/image-20201130105338767.png)
 
-   It will return the pointer of shellcode in resource，and shellcodesize is size of sehllcode。
+   It will return the pointer of shellcode in resource，and shellcodesize is size of sehllcode.In most cases, this step doesn't need to be changed, you can do anything after you get the shellcode.
 
    
 
 3. Loading shellcode in your method ,and compile(PS:**Make sure you compile statically and cancel the debug symbolic link**)
 
-   ![image-20201124162721783](Readme.assets/image-20201124162721783.png)
+   ![image-20201130105408030](Readme.assets/image-20201130105408030.png)
 
    
 
-4. Use method name your template,and change its format to "DAT"，Put it in correct arch in DATA folder ,The generator will automatically get the loading method.
+4. Use method name your template,this name will be loading method's name on UI,and change its format to "DAT",，Put it in correct arch in DATA folder ,The generator will automatically get the loading method.
 
-   ![image-20201124162912373](Readme.assets/image-20201124162912373.png)
+   ![image-20201130105439913](Readme.assets/image-20201130105439913.png)
 
    
 
