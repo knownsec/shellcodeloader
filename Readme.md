@@ -94,21 +94,21 @@ Environment: The generator uses MFC to implement UI, the generator and loader te
 
   Virus total detection results,based on Cobalt Strike original shellcode without anti-sandbox option as an example:
 
-| Loading methods          | Detected |
-| ------------------------ | -------- |
-| CreateThreadpoolWait加载 | 3/72     |
-| Fiber加载                | 4/72     |
-| NtTestAlert加载          | 5/70     |
-| SEH异常加载              | 2/72     |
-| TLS回调加载              | 28/71    |
-| 动态加载                 | 1/72     |
-| 动态加载plus             | 28/71    |
-| 系统call加载             | 1/69     |
-| APC注入加载              | 6/72     |
-| Early Brid APC注入加载   | 4/72     |
-| NtCreateSection注入加载  | 2/71     |
-| 入口点劫持注入加载       | 3/72     |
-| 线程劫持注入加载         | 6/72     |
+| Loading methods             | Detected |
+| --------------------------- | -------- |
+| CreateThreadpoolWait Load   | 3/72     |
+| Fiber Load                  | 4/72     |
+| NtTestAlert Load            | 5/70     |
+| SEH Except Load             | 2/72     |
+| TLS CallBack Load           | 28/71    |
+| Dynamic Load                | 1/72     |
+| Dynamic Load plus           | 28/71    |
+| Syscall Load                | 1/69     |
+| APC-Inject Load             | 6/72     |
+| Early Brid APC-Inject Load  | 4/72     |
+| NtCreateSection-Inject Load | 2/71     |
+| OEP Hiijack-Inject Load     | 3/72     |
+| Thread Hiijack-Inject Load  | 6/72     |
 
 After clieck the anti-sandbox option in the dynamic loading mode, the results are as follows:
 
