@@ -34,13 +34,13 @@ Windows平台的shellcode免杀加载器。
 
 1. **打开生成器**
 
-   ![image-20201124160202106](readme.assets/image-20201124160202106.png)
+   ![image-20201124160202106](Readme.assets/image-20201124160202106.png)
 
    
 
 2. **将想要加载的shellcode源文件(.bin)拖入该窗口**
 
-   ![image-20201124160330548](readme.assets/image-20201124160330548.png)
+   ![image-20201124160330548](Readme.assets/image-20201124160330548.png)
 
    
 
@@ -50,7 +50,7 @@ Windows平台的shellcode免杀加载器。
 
 4. **选择你想要的加载方式，不同位数下的加载方式会有不同，其取决于DATA目录下对应的加载器模板。**
 
-   ![image-20201124160839607](readme.assets/image-20201124160839607.png)
+   ![image-20201124160839607](Readme.assets/image-20201124160839607.png)
 
    
 
@@ -66,7 +66,7 @@ Windows平台的shellcode免杀加载器。
 
 2. 调用GetShellcodeFromRes()函数获取shellcode信息,注意100不可更改，除非你改了生成器中的资源序号。
 
-   ![image-20201124162327193](readme.assets/image-20201124162327193.png)
+   ![image-20201124162327193](Readme.assets/image-20201124162327193.png)
 
    其返回shellcode的数据指针，并且，shellcodeSize就是shellcode的大小。多数情况下，这一步是不需要进行更改的，你可以在获取shellcode之后做任何事。
 
@@ -74,13 +74,13 @@ Windows平台的shellcode免杀加载器。
 
 3. 按照你需要的方法加载shellcode，完成后进行编译(PS:请确保你进行了静态编译，且取消了调试符号链接).
 
-   ![image-20201124162721783](readme.assets/image-20201124162721783.png)
+   ![image-20201124162721783](Readme.assets/image-20201124162721783.png)
 
    
 
 4. 将编译出来的文件进行指定命名,这里的命名就是UI上最终现实的加载方式名称，并将其后缀改为DAT，放入指DATA目录下指定位数的目录中，生成器会自动获取该加载方式。
 
-   ![image-20201124162912373](readme.assets/image-20201124162912373.png)
+   ![image-20201124162912373](Readme.assets/image-20201124162912373.png)
 
    
 
@@ -112,13 +112,13 @@ VT检测效果，均以CS原始shellcode，并不勾选反沙箱为例：
 
 在动态加载方式勾选反沙箱之后，结果如下：
 
-![1fef278889c961331a185698c35d220](readme.assets/1fef278889c961331a185698c35d220.png)
+![1fef278889c961331a185698c35d220](Readme.assets/1fef278889c961331a185698c35d220.png)
 
 
 
 使用该加载器bypass诺顿的智能防火墙出网拦截，并上线:
 
-![image-20201124163815942](readme.assets/image-20201124163815942.png)
+![image-20201124163815942](Readme.assets/image-20201124163815942.png)
 
 
 
