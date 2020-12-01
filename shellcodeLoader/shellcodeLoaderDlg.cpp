@@ -175,7 +175,8 @@ void CshellcodeLoaderDlg::OnBnClickedGenerate()
 	int shellcodeSize = GetFileSize(hShellcode, NULL);
 	PBYTE shellcode = (PBYTE)malloc(shellcodeSize + sizeof(config));
 	memcpy(shellcode, &config, sizeof(CONFIG));
-	ReadFile(hShellcode, shellcode + sizeof(CONFIG), shellcodeSize, NULL, NULL);
+	DWORD lpNumberOfBytesRead;
+	ReadFile(hShellcode, shellcode + sizeof(CONFIG), shellcodeSize, &lpNumberOfBytesRead, NULL);
 	StreamCrypt(shellcode + sizeof(CONFIG), shellcodeSize, config.key,128);
 	HANDLE  hResource = BeginUpdateResource(filepath, FALSE);
 	if (NULL != hResource)
