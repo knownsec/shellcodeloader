@@ -136,7 +136,7 @@ void CshellcodeLoaderDlg::OnBnClickedGenerate()
 	UpdateData(TRUE);
 	if (ShellcodePath.IsEmpty())
 	{
-		AfxMessageBox(_T("请先拖入一个shellcode文件(.bin)"));
+		AfxMessageBox(_T("Please drag in a shellcode file first(.bin)"));
 		return;
 	}
 	CONFIG config = { 0 };
@@ -162,13 +162,13 @@ void CshellcodeLoaderDlg::OnBnClickedGenerate()
 	StrCatW(filepath, _T("\\loader.exe"));
 	if (CopyFile(srcpath,filepath,FALSE)==0)
 	{
-		AfxMessageBox(_T("生成加载器失败!"));
+		AfxMessageBox(_T("Build loader failed"));
 		return;
 	}
 	HANDLE hShellcode = CreateFile(ShellcodePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (hShellcode == INVALID_HANDLE_VALUE)
 	{
-		AfxMessageBox(_T("shellcode文件被占用！"));
+		AfxMessageBox(_T("Shellcode file occupied!"));
 		CloseHandle(hShellcode);
 		return;
 	}
@@ -183,7 +183,7 @@ void CshellcodeLoaderDlg::OnBnClickedGenerate()
 	{
 		if (UpdateResource(hResource, RT_RCDATA, MAKEINTRESOURCE(100), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPVOID)shellcode, shellcodeSize + sizeof(config)) != FALSE)
 		{
-			AfxMessageBox(_T("生成成功"));
+			AfxMessageBox(_T("Generated successfully"));
 			EndUpdateResource(hResource, FALSE);
 		}
 	}
