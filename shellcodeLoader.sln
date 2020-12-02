@@ -44,6 +44,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OEP Hiijack-Inject Load", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Thread Hiijack-Inject Load", "plug\Thread Hiijack-Inject Load\Thread Hiijack-Inject Load.vcxproj", "{9C8E8054-B951-44F4-9B6C-9021BE918EC8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EnumWindows Load", "plug\EnumWindows Load\EnumWindows Load.vcxproj", "{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -172,6 +174,14 @@ Global
 		{9C8E8054-B951-44F4-9B6C-9021BE918EC8}.Release|x64.Build.0 = Release|x64
 		{9C8E8054-B951-44F4-9B6C-9021BE918EC8}.Release|x86.ActiveCfg = Release|Win32
 		{9C8E8054-B951-44F4-9B6C-9021BE918EC8}.Release|x86.Build.0 = Release|Win32
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Debug|x64.ActiveCfg = Debug|x64
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Debug|x64.Build.0 = Debug|x64
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Debug|x86.ActiveCfg = Debug|Win32
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Debug|x86.Build.0 = Debug|Win32
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Release|x64.ActiveCfg = Release|x64
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Release|x64.Build.0 = Release|x64
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Release|x86.ActiveCfg = Release|Win32
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,5 +204,6 @@ Global
 		{F5D3E249-2D2F-4C8F-99D9-4ED661ADBC57} = {CA099911-8087-4632-96A5-A85511712F38}
 		{7CCFF851-1E2C-4EAD-8415-BB4CBB96FFE0} = {CA099911-8087-4632-96A5-A85511712F38}
 		{9C8E8054-B951-44F4-9B6C-9021BE918EC8} = {CA099911-8087-4632-96A5-A85511712F38}
+		{B2C60BD3-50BA-444C-ADC5-C0026BF8BA9E} = {7F17ED50-B0CD-4BF8-B78F-76F5DBA07F9C}
 	EndGlobalSection
 EndGlobal
