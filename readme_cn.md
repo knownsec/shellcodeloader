@@ -18,7 +18,7 @@ Windows平台的shellcode免杀加载器。
 
    环境:生成器使用MFC实现UI，生成器和加载器模板均使用C++开发，VS2015静态编译。
 
-   方法:使用VS2015打开项目的解决方案(.sln)，再进行编译即可。你也可以从[realse](https://github.com/knownsec/shellcodeloader/releases/tag/v1.0)下载成品。
+   方法:使用VS2015打开项目的解决方案(.sln)，再进行编译即可。你也可以从[realse](https://github.com/knownsec/shellcodeloader/releases/)下载成品。
 
 
 
