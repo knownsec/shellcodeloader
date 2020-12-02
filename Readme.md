@@ -18,7 +18,7 @@ ShellcodeLoader of windows can bypass AV.
 
 Environment: The generator uses MFC to implement UI, the generator and loader templates are developed with C + +, and statically compiled by VS2015.
 
- Methods: Use vs2015 to open the project solution (. sln), and then compile.Of course,You can download the product from [realse](https://github.com/knownsec/shellcodeloader/releases/tag/v1.0) .
+ Methods: Use vs2015 to open the project solution (. sln), and then compile.Of course,You can download the product from [realse](https://github.com/knownsec/shellcodeloader/releases/) .
 
 
 
