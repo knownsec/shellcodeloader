@@ -6,6 +6,7 @@
 #include "shellcodeLoader.h"
 #include "shellcodeLoaderDlg.h"
 #include "afxdialogex.h"
+#include"../plug/public.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -98,37 +99,37 @@ HCURSOR CshellcodeLoaderDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CshellcodeLoaderDlg::StreamCrypt(unsigned char* Data, unsigned long Length, unsigned char* Key, unsigned long KeyLength)
-{
-	int i = 0, j = 0;
-	unsigned char k[256] = { 0 }, s[256] = { 0 };
-	unsigned char tmp = 0;
-	for (i = 0; i < 256; i++)
-	{
-		s[i] = i;
-		k[i] = Key[i%KeyLength];
-	}
-	for (i = 0; i < 256; i++)
-	{
-		j = (j + s[i] + k[i]) % 256;
-		tmp = s[i];
-		s[i] = s[j];
-		s[j] = tmp;
-	}
-	int t = 0;
-	i = 0, j = 0, tmp = 0;
-	unsigned long l = 0;
-	for (l = 0; l < Length; l++)
-	{
-		i = (i + 1) % 256;
-		j = (j + s[i]) % 256;
-		tmp = s[i];
-		s[i] = s[j];
-		s[j] = tmp;
-		t = (s[i] + s[j]) % 256;
-		Data[l] ^= s[t];
-	}
-}
+//void CshellcodeLoaderDlg::StreamCrypt(unsigned char* Data, unsigned long Length, unsigned char* Key, unsigned long KeyLength)
+//{
+//	int i = 0, j = 0;
+//	unsigned char k[256] = { 0 }, s[256] = { 0 };
+//	unsigned char tmp = 0;
+//	for (i = 0; i < 256; i++)
+//	{
+//		s[i] = i;
+//		k[i] = Key[i%KeyLength];
+//	}
+//	for (i = 0; i < 256; i++)
+//	{
+//		j = (j + s[i] + k[i]) % 256;
+//		tmp = s[i];
+//		s[i] = s[j];
+//		s[j] = tmp;
+//	}
+//	int t = 0;
+//	i = 0, j = 0, tmp = 0;
+//	unsigned long l = 0;
+//	for (l = 0; l < Length; l++)
+//	{
+//		i = (i + 1) % 256;
+//		j = (j + s[i]) % 256;
+//		tmp = s[i];
+//		s[i] = s[j];
+//		s[j] = tmp;
+//		t = (s[i] + s[j]) % 256;
+//		Data[l] ^= s[t];
+//	}
+//}
 
 void CshellcodeLoaderDlg::OnBnClickedGenerate()
 {

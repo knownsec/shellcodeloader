@@ -6,6 +6,7 @@
 #include "afxwin.h"
 
 
+
 // CshellcodeLoaderDlg ¶Ô»°¿ò
 class CshellcodeLoaderDlg : public CDialogEx
 {
@@ -38,15 +39,7 @@ public:
 	BOOL bool_autostart;
 	BOOL bool_antisandbox;
 	CComboBox Method;
-	void StreamCrypt(unsigned char* Data, unsigned long Length, unsigned char* Key, unsigned long KeyLength);
 	afx_msg void OnBnClickedGenerate();
 	afx_msg void OnBnClickedX64();
 };
 
-
-struct CONFIG
-{
-	BOOL antisandbox;
-	BOOL autostart;
-	unsigned char key[128];
-};
